@@ -7,4 +7,4 @@ Using Bootstrap 4.6.1 for Frontend and Flask for Backend
 # To-Do List
 - [x] Create Frontend
 - [x] Create Backend
-- [] Integrate API From Backend to Frontend
+- [ ] Integrate API From Backend to Frontend
