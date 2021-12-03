@@ -63,15 +63,28 @@ def update_profile():
         if request.json:
             jsonReq = request.json
             jsonLoad = jsonReq
+            if len(jsonLoad['username']) < 4 or len(jsonLoad['username']) > 8:
+                err = {"error": -2}
+                return json.dumps(err)
+            if not jsonLoad['username'].isalnum():
+                err = {"error": -3}
+                return json.dumps(err)
             try:
                 query = "INSERT INTO user (username, email, profilepic, headline, aboutme, fullname) VALUES ('{}','{}','{}','{}','{}','{}')".format(jsonLoad['username'], jsonLoad['email'],jsonLoad['uploadedPic'],jsonLoad['headline'],jsonLoad['aboutme'], jsonLoad['fullName'])
                 cur.execute(query)
-                print(query)
+                query = cur.execute("SELECT * FROM user ORDER BY id DESC").fetchone()
+                obj = {"username": query[1],
+                       "email": query[2],
+                       "uploadedPic": query[3],
+                       "headline": query[4],
+                       "aboutme": query[5],
+                       "fullName": query[6]
+                       }
 
-                return redirect(curr_profile)
+                return json.dumps(obj)
             except KeyError:
                 err = {"error": -1}
-                return "-1"
+                return json.dumps(err)
 
 
     else:
