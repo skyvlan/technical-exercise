@@ -1,0 +1,367 @@
+body{
+    font-family: Inter, sans-serif;
+}
+.profilecard{
+    width: 350px;
+    height: 489px;
+}
+
+.pageheader{
+    width: 100%;
+    height: 364px;
+    background: linear-gradient(86.27deg, #033E5E -0.78%, #054B6A 101.11%);;
+}
+
+.profpic{
+    width: 120px;
+    height: 120px;
+    margin-top: 21px;
+
+}
+
+.profileInfo{
+    position: absolute;
+    width: 350px;
+    height: 346px;
+    left: 113px;
+}
+
+
+
+.navbar-style{
+    height: 80px;
+}
+
+.profilecard{
+    margin-top: -200px;
+    background: #FFFFFF;
+
+
+    border: 1px solid #E4E4E7;
+
+
+    box-shadow: 2px 4px 12px rgba(51, 51, 51, 0.1);
+    border-radius: 8px;
+}
+
+.userFullName{
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.userJobdesc{
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    color: #3F3F46;
+}
+
+.btn-custom-outline{
+    border: 1px solid #D4D4D8;
+    box-sizing: border-box;
+    border-radius: 2px;
+    color: #3F3F46;
+}
+.description{
+    margin-left: 25px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    color: #3F3F46;
+}
+
+.address-text{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 26px;
+
+    color: #71717A;
+}
+
+.tagline{
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #3F3F46;
+}
+
+.copyright-text{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+    /* gray/gray-400 */
+
+    color: #A1A1AA;
+}
+
+.tos-text{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #A1A1AA;
+
+}
+
+.acad-card{
+    width: 350px;
+    height: 132px;
+    margin-top: 20px;
+    margin-left: 20px;
+
+
+    border: 1px solid #E4E4E7;
+    border-radius: 8px
+}
+
+.container-size{
+    width: 730px;
+    height: 521px;
+}
+
+.event-card{
+    width: 350px;
+    height: 122px;
+    border: 1px solid #D4D4D8;
+    border-radius: 4px;
+    margin-left: 24px;
+}
+
+.challenge-card{
+    width: 350px;
+    height: 252px;
+    background: #FFFFFF;
+
+    border: 1px solid #E4E4E7;
+    border-radius: 8px;
+}
+
+.acad-pic{
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    top:16px;
+    left: 16px;
+    background: linear-gradient(89.89deg, rgba(14, 25, 45, 0.066) 0.1%, rgba(14, 25, 45, 0.036) 99.91%);
+}
+
+.acad-name{
+    position: absolute;
+    width: 246px;
+    height: 48px;
+    top:16px;
+    left: 88px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+
+}
+
+
+.acad-divisor{
+    position: absolute;
+    width: 318px;
+    top: 88px;
+    left: 16px;
+}
+
+.acad-desc{
+    position: absolute;
+    left: 17px;
+    top: 106px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    /* identical to box height, or 167% */
+
+    letter-spacing: 0.05em;
+    text-transform: capitalize;
+}
+
+.event-name{
+    position: absolute;
+    width: 318px;
+    height: 48px;
+    top: 20px;
+    left: 16px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+
+}
+
+.event-divisor{
+    position: absolute;
+    width: 318px;
+    height: 0px;
+    left: 16px;
+    top: 64px;
+}
+
+.event-label{
+    position: absolute;
+    top: 90px;
+    left: 16px;
+    width: 70px;
+    height: 22px;
+    background: #FFFBEB;
+
+
+    border: 1px solid #FBBF24;
+    box-sizing: border-box;
+    border-radius: 2px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+
+    color: #F59E0B;
+}
+
+.challenge-pic{
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    top: 16px;
+    left: 16px;
+
+}
+
+.challenge-name{
+    position: absolute;
+    width: 318px;
+    height: 48px;
+    top: 90px;
+    left: 16px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+
+
+    display: flex;
+    align-items: center;
+    color: #3F3F46;
+
+}
+
+.challenge-org{
+    position: absolute;
+    width: 318px;
+    height: 20px;
+    left: 16px;
+    top: 150px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    color: #71717A;
+}
+.challenge-winner{
+    position: absolute;
+    width: 298px;
+    height: 20px;
+    left: 40px;
+    top: 178px;
+
+    /* content/regular/inter-regular-text-xsm */
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    /* identical to box height, or 167% */
+
+
+    /* gray/gray-500 */
+
+    color: #71717A;
+
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 8px;
+}
+.challenge-divisor{
+    position: absolute;
+    width: 318px;
+    height: 0px;
+    left: 16px;
+    top: 196px;
+
+
+    border: 1px solid #E4E4E7;
+}
+.challenge-trophy{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 175px;
+    left: 26px;
+}
+.challenge-link{
+    position: absolute;
+    width: 38px;
+    height: 22px;
+    left: 272px;
+    top: 220px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+
+
+
+
+
+    color: #3B82F6;
+
+
+
+}
+
+.nav-pills .nav-link.active, .nav-pills .nav-link.active:hover,.nav-pills .nav-link.active:focus{
+    background-color:#F4F4F5;;
+    color: #3F3F46;
+    font-weight:normal;
+
+}
+
+.pill-styling{
+    color: #3F3F46;
+}
