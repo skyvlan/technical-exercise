@@ -1,10 +1,7 @@
 body{
     font-family: Inter, sans-serif;
 }
-.profilecard{
-    width: 350px;
-    height: 489px;
-}
+
 
 .pageheader{
     width: 100%;
@@ -33,6 +30,8 @@ body{
 }
 
 .profilecard{
+    width: 350px;
+    height: 489px;
     margin-top: -200px;
     background: #FFFFFF;
 
@@ -364,4 +363,60 @@ body{
 
 .pill-styling{
     color: #3F3F46;
+}
+
+.form-desc{
+    position: relative;
+    width: 360px;
+    height: 40px;
+    left: 16px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: #85898E;
+
+
+}
+
+.modal-lg{
+    max-width: 40%;
+}
+
+.form-1{
+    margin-top: 44px;
+}
+
+.expand-input{
+    height: 148px;
+
+}
+
+.btn-primary{
+    background: #2D3E50;
+    border-radius: 2px;
+    border: 2px solid #2D3E50;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    color: #FFFFFF;
+}
+
+.btn-secondary{
+    background: #FFFFFF;
+    border: 1px solid #D4D4D8;
+    box-sizing: border-box;
+    border-radius: 2px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    color: #3F3F46;
+
 }

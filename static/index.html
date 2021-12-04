@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css"  crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="./css/google-fonts.css" rel="stylesheet">
+    <title>Dicoding</title>
+</head>
+<body>
+
+<script src="./js/jquery.min.js" crossorigin="anonymous"></script>
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script>
+    $(document).ready(function (){
+        var imgLink;
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: 'profile',
+            success: function (data) {
+                var parseJson = JSON.parse(JSON.stringify(data))
+                $(".userFullName").text(parseJson["fullName"])
+                $(".userJobdesc").text(parseJson["headline"])
+                $(".profpic").attr("src", parseJson["uploadedPic"])
+            }
+        })
+        $("#fileUpload").change(function () {
+            var form = $("#uploadForm")[0];
+            var formData = new FormData(form);
+            $.ajax({
+                type: 'POST',
+                enctype: 'multipart/form-data',
+                url: "/upload_pic",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
+                success: function(data){
+                    alert(data)
+                    var parseJson = JSON.parse(data)
+
+                }
+            })
+
+
+        })
+        $("#submitBtn").click(function () {
+            var fullname = $("#fullname").val()
+            var emailAddr = $("#email").val()
+            var uploadedPicStr = "/profpic/84443c7c-32ce-4cd7-816d-57451437824c.jpg"
+            var headlineStr = $("#headline").val()
+            var aboutMeStr = $("#aboutMe").val()
+            var usernameStr = $("#userName").val()
+            var reqObj = {username: usernameStr, email: emailAddr, uploadedPic: uploadedPicStr, headline: headlineStr, aboutme: aboutMeStr, fullName: fullname}
+            var jsonReq = JSON.stringify(reqObj)
+            $.ajax({
+                type: "POST",
+                url: "update_profile",
+                data: jsonReq,
+                contentType: "application/json",
+                dataType: "json",
+                success: function(data){
+                    $(".userFullName").text(fullname)
+                $(".userJobdesc").text(headlineStr)
+                $(".profpic").attr("src", uploadedPicStr)
+                }
+            })
+        $("#formModal").modal('hide')
+
+    })
+        })
+</script>
+<nav class="navbar navbar-expand-lg navbar-light navbar-style">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img src="./assets/logo-dicoding.png" width="112.8" height="31.2" ></a>
+        <div class="navbar-collapse offcanvas-collapse">
+            <div class="navbar-menu-wrapper">
+                <div class="d-none d-lg-block">
+                <ul class="navbar-nav mr-1">
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Academy
+                    </a>
+
+                    </li>
+                </ul>
+                    <ul class="navbar-nav ml-1"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </li>
+    </ul>
+</nav>
+<div class="pageheader"></div>
+<div class="container">
+    <div class="row">
+        <div class="profilecard">
+            <div class="mx-auto text-center">
+                <img src="./assets/profpic.png" class="rounded-circle profpic">
+                <div class="userFullName text-center mt-3 bold">John Doe</div>
+                <br>
+                <div class="userJobdesc text-center">Jobdesc at Jobdesc</div>
+                <br>
+                <button type="button" class="btn btn-light bg-white btn-custom-outline"  data-toggle="modal" data-target="#formModal">Edit Profil</button>
+            </div>
+            <div class="profileInfo"></div>
+            <div class="profileFooter mt-5">
+                    <div class="description">
+                        <div class="user-xp"><img src="./assets/icons/icon_xp.svg">&nbsp&nbsp200 XP</div>
+                        <br>
+                        <div class="user-join "><img src="./assets/icons/icon_clock.svg">&nbsp&nbspBergabung sejak 2020</div>
+                        <br>
+                        <div class="user-city"><img src="./assets/icons/icon_location.svg">&nbsp&nbspKota Bandung</div>
+                    </div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+        <div class="content col">
+            <ul class="nav nav-pills breadcrumb bg-white" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active pill-styling" id="academy-tab" data-toggle="tab" href="#academy" aria-controls="academy" aria-selected="true">Academy</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link pill-styling" id="event-tab" data-toggle="tab" href="#event" aria-controls="event" aria-selected="false">Event</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link pill-styling" id="challenge-tab" data-toggle="tab" href="#challenge" aria-controls="challenge" aria-selected="false">Challenge</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link pill-styling" id="win-tab" data-toggle="tab" href="#win" aria-controls="win" aria-selected="false">Winning App</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="academy" role="tabpanel" aria-labelledby="academy-tab">
+                    <div class="container-size">
+                    <table>
+                        <tr>
+                            <td><div class="card acad-card">
+                                <div class="acad-pic"><img src="./assets/program.png" class="rounded" width="64" height="64" alt="ngoding"></div>
+                                <div class="acad-name">Tutorial C++ Untuk Pemula</div>
+                                <hr class="acad-divisor">
+                                <div class="acad-desc"><img src="./assets/icons/icon_clock.svg">&nbsp;10 Jam Belajar&nbsp;&nbsp;&nbsp;<img src="./assets/icons/star_fill.svg">&nbsp;4.99&nbsp;&nbsp;&nbsp;<img src="assets/icons/course_level.svg">&nbsp;&nbsp;Pemula</div>
+                            </div></td>
+                            <td><div class="card acad-card">
+                                <div class="acad-pic"><img src="./assets/program.png" class="rounded" width="64" height="64" alt="ngoding"></div>
+                                <div class="acad-name">Tutorial C Untuk Pemula</div>
+                                <hr class="acad-divisor">
+                                <div class="acad-desc"><img src="./assets/icons/icon_clock.svg">&nbsp;10 Jam Belajar&nbsp;&nbsp;&nbsp;<img src="./assets/icons/star_fill.svg">&nbsp;4.99&nbsp;&nbsp;&nbsp;<img src="assets/icons/course_level.svg">&nbsp;&nbsp;Pemula</div>
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="card acad-card">
+                                <div class="acad-pic"><img src="./assets/program.png" class="rounded" width="64" height="64" alt="ngoding"></div>
+                                <div class="acad-name">Tutorial PHP Untuk Pemula</div>
+                                <hr class="acad-divisor">
+                                <div class="acad-desc"><img src="./assets/icons/icon_clock.svg">&nbsp;10 Jam Belajar&nbsp;&nbsp;&nbsp;<img src="./assets/icons/star_fill.svg">&nbsp;4.99&nbsp;&nbsp;&nbsp;<img src="assets/icons/course_level.svg">&nbsp;&nbsp;Pemula</div>
+                            </div></td>
+                            <td><div class="card acad-card">
+                                <div class="acad-pic"><img src="./assets/program.png" class="rounded" width="64" height="64" alt="ngoding"></div>
+                                <div class="acad-name">Tutorial HTML Untuk Pemula</div>
+                                <hr class="acad-divisor">
+                                <div class="acad-desc"><img src="./assets/icons/icon_clock.svg">&nbsp;10 Jam Belajar&nbsp;&nbsp;&nbsp;<img src="./assets/icons/star_fill.svg">&nbsp;4.99&nbsp;&nbsp;&nbsp;<img src="assets/icons/course_level.svg">&nbsp;&nbsp;Pemula</div>
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="card acad-card">
+                                <div class="acad-pic"><img src="./assets/program.png" class="rounded" width="64" height="64" alt="ngoding"></div>
+                                <div class="acad-name">Tutorial Python Untuk Pemula</div>
+                                <hr class="acad-divisor">
+                                <div class="acad-desc"><img src="./assets/icons/icon_clock.svg">&nbsp;10 Jam Belajar&nbsp;&nbsp;&nbsp;<img src="./assets/icons/star_fill.svg">&nbsp;4.99&nbsp;&nbsp;&nbsp;<img src="assets/icons/course_level.svg">&nbsp;&nbsp;Pemula</div>
+                            </div></td>
+                            <td><div class="card acad-card">
+                                <div class="acad-pic"><img src="./assets/program.png" class="rounded" width="64" height="64" alt="ngoding"></div>
+                                <div class="acad-name">Tutorial Java Untuk Pemula</div>
+                                <hr class="acad-divisor">
+                                <div class="acad-desc"><img src="./assets/icons/icon_clock.svg">&nbsp;10 Jam Belajar&nbsp;&nbsp;&nbsp;<img src="./assets/icons/star_fill.svg">&nbsp;4.99&nbsp;&nbsp;&nbsp;<img src="assets/icons/course_level.svg">&nbsp;&nbsp;Pemula</div>
+                            </div></td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="event" role="tabpanel" aria-labelledby="event-tab">
+                    <div class="container-size">
+                        <table>
+                            <tr>
+                                <td><div class="card event-card">
+                                    <div class="event-name">Seminar Dicoding #1</div>
+                                    <hr class="event-divisor">
+                                    <div class="event-label text-center">Seminar</div>
+                                </div></td>
+                                <td><div class="card event-card">
+                                    <div class="event-name">Seminar Dicoding #2</div>
+                                    <hr class="event-divisor">
+                                    <div class="event-label text-center">Seminar</div>
+                                </div></td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="challenge" role="tabpanel" aria-labelledby="challenge-tab">
+                    <div class="container-size">
+                        <div class="card challenge-card">
+                            <div class="challenge-pic"><img src="./assets/program.png" class="rounded" width="64" height="64" alt="ngoding"></div>
+                            <div class="challenge-name">Coding Challenge Challenge Dicoding #1</div>
+                            <div class="challenge-org">Diselengarakan oleh: Dicoding Indonesia</div>
+                            <div class="challenge-trophy"><img src="assets/icons/trophy.svg"></div>
+                            <div class="challenge-winner">Winner</div>
+                            <hr class="challenge-divisor">
+                            <div class="challenge-link"><a href="#">Link</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="win" role="tabpanel" aria-labelledby="win-tab"></div>
+            </div>
+        </div>
+
+    </div>
+    <hr class="footer-divider">
+    <div class="top-footer">
+        <footer class="bg-white">
+        <div class="container">
+            <div class="Logo"><img src="./assets/logo-dicoding.png" width="112.8" height="31.2" >
+            <p class="mt-3 address-text">
+                Dicoding Space
+                <br>
+                Jl. Batik Kumeli No.50, Sukaluyu,
+                <br>
+                Kec. Cibeunying Kaler, Kota Bandung
+                <br>
+                Jawa Barat 40123
+                <br>
+            </p>
+            <br>
+            </div></div>
+            <hr>
+            <div class="bottom-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="tagline">Decode ideas Discover Potentials</div>
+                        <div class="col text-right copyright-text">© Dicoding Indonesia 2021</div>
+                        <div class="col-lg-2 text-right tos-text">Term</div>
+                        <span>•</span>
+                        <div class="col-lg-1 text-right tos-text">Privacy</div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+
+
+
+
+</div>
+<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Profil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="userForm">
+                        <div class="form-group">
+
+                            <div class="form-image"><img src="./assets/profpic.png" class="rounded float-left" width="100px" height="100px"></div>
+                            <form id="uploadForm" enctype="multipart/form-data" target="/upload_pic">
+                                <input type="file" class="btn btn-light bg-gray btn-gray-outline ml-3" id="fileUpload"/>
+                            </form>
+                            <div class="form-desc">Gambar Profil Anda sebaiknya memiliki rasio 1:1 dan berukuran tidak lebih dari 2MB.</div>
+                        </div>
+                        <div class="form-group form-1">
+                            <label for="fullname">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="fullname" placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="userName">Username</label>
+                            <input type="text" class="form-control" id="userName" placeholder="user123">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" placeholder="mail@mail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="headline">Headline</label>
+                            <input type="email" class="form-control" id="headline" aria-describedby="headlineHelp" placeholder="University Student">
+                            <small id="headlineHelp" class="form-text text-muted">Dapat diisi dengan titel atau jabatan utama Anda.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="headline">Tentang Saya</label>
+                            <input type="text" class="form-control" id="aboutMe" aria-describedby="aboutMeHelp" placeholder="Hello World.">
+                            <small id="aboutMeHelp" class="form-text text-muted">Tulis cerita singkat tentang diri Anda.</small>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-primary" id="submitBtn">Simpan</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
