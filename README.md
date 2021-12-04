@@ -5,4 +5,4 @@ Backend using Flask
 # To-Do
 - [x] create frontend
 - [x] create backend
-- [ ] connect frontend & backend
+- [ ] connect frontend & backend (partially done)
