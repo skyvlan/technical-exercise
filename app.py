@@ -20,9 +20,21 @@ def allowed_file(filename):
 
 @app.route('/')
 def page():
-    return 'Hello World!'
+    return app.send_static_file("index.html")
 
-@app.route('/uploads/<name>')
+@app.route('/css/<path:path>')
+def send_css(path):
+    return send_from_directory("css", path)
+
+@app.route('/js/<path:path>')
+def send_js(path):
+    return send_from_directory("js", path)
+
+@app.route('/assets/<path:path>')
+def send_assets(path):
+    return send_from_directory("assets", path)
+
+@app.route('/profpic/<name>')
 def download_file(name):
     return send_from_directory(app.config["UPLOAD_FOLDER"], name)
 
@@ -31,10 +43,12 @@ def download_file(name):
 def upload_pic():
     if request.method == 'POST':
         if 'file' not in request.files:
-            return '-1'
+            err = {"error": -1}
+            return json.dumps(err)
         file = request.files['file']
         if file.filename == '':
-            return '-2'
+            err = {"error": -2}
+            return json.dumps(err)
         if file and allowed_file(file.filename):
             file_ext = file.filename.split(".")[1]
             filename = str(uuid.uuid4()) +"."+ file_ext
@@ -86,9 +100,6 @@ def update_profile():
                 err = {"error": -1}
                 return json.dumps(err)
 
-
-    else:
-        return '-1'
 
 if __name__ == '__main__':
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
